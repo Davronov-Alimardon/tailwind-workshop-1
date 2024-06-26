@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const FilterButton = ({ children, active }: any) => {
   return (
@@ -13,16 +15,46 @@ const FilterButton = ({ children, active }: any) => {
   );
 };
 
+const FilterInput = ({ label, placeholder, className }: any) => {
+  return (
+    <div className="w-full">
+      <p className="text-[12px] text-muted-foreground">{label}</p>
+      <Input
+        placeholder={placeholder}
+        className={cn("border-0 border-r", className)}
+      />
+    </div>
+  );
+};
+
 export const Filters = () => {
   return (
-    <div className="bg-[#f3f6f9] rounded-xl p-6">
+    <div className="bg-[#f3f6f9] rounded-xl p-6 space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-x-2">
           <FilterButton active>Hotel</FilterButton>
           <FilterButton>House</FilterButton>
           <FilterButton>Village</FilterButton>
         </div>
-        <div>Today: Oct 10, Tue</div>
+        <p className="text-muted-foreground text-sm">Today: Oct 10, Tue</p>
+      </div>
+      <div className="flex drop-shadow-2xl items-end">
+        <FilterInput
+          label="City or hotel"
+          placeholder="Search"
+          className="rounded-l-xl rounded-r-none"
+        />
+        <FilterInput
+          label="City or hotel"
+          placeholder="Search"
+          className="rounded-l-none rounded-r-none"
+        />
+        <FilterInput
+          label="City or hotel"
+          placeholder="Search"
+          className="rounded-l-none rounded-r-none"
+        />
+        <Button className="rounded-l-none w-full">Search</Button>
       </div>
     </div>
   );
